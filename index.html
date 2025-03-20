@@ -1,92 +1,95 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset='utf-8'>
+
+<head>
+  <meta charset='utf-8'>
   <meta name="pwa-capable" content="yes">
   <link rel="manifest" href="manifest.json">
   <link rel="canonical" href="https://kaheetonaa.github.io/id_sandbox_for_all/" />
   <title>iD4ALL</title>
   <link rel='stylesheet' href='dist/iD.css'>
   <link rel='icon' type="image/x-icon" href="/icon/icon-4all.png>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comfortaa">
+  <link rel=" stylesheet" href="https://fonts.googleapis.com/css?family=Comfortaa">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name='apple-mobile-web-app-capable' content='yes' />
   <meta name="mobile-web-app-capable" content="yes">
   <meta name='apple-mobile-web-app-status-bar-style' content='black-translucent' />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style type='text/css'>
-      /* apply document-level styling to standalone iD only */
-      html, body {
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        /* disable elastic page bounce upon scroll */
-        overflow: hidden;
-      }
-      .virtual-key {
-        display: block;
-      }
+  <style type='text/css'>
+    /* apply document-level styling to standalone iD only */
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      /* disable elastic page bounce upon scroll */
+      overflow: hidden;
+    }
 
-      .circle-button {
-        width: 5vw;
-        height: 5vw;
-        /* Width of the button */
-        aspect-ratio: 1/1;
-        /* Height of the button */
-        border-radius: 50%;
-        /* Makes the button circular */
-        border: none;
-        /* No border */
-        color: white;
-        /* Text color */
-        background-color: hsla(194, 78%, 65%, 0.5);
-        /* Button color */
-        font-size: 32px;
-        /* Font size */
-        cursor: pointer;
-        /* Change cursor to pointer */
-        position: absolute;
-        /* Position absolute for free placement */
-        display: flex;
-        /* Flexbox for centering text */
-        justify-content: center;
-        /* Center text horizontally */
-        align-items: center;
-        /* Center text vertically */
-        transition: background-color 0.3s;
-        /* Smooth background color transition */
-        z-index: 20;
-      }
+    .virtual-key {
+      display: block;
+    }
 
-      .circle-button:hover {
-        background-color: hsla(194, 78%, 65%, 0.8);
-        /* Darker shade on hover */
-      }
+    .circle-button {
+      width: 5vw;
+      height: 5vw;
+      /* Width of the button */
+      aspect-ratio: 1/1;
+      /* Height of the button */
+      border-radius: 50%;
+      /* Makes the button circular */
+      border: none;
+      /* No border */
+      color: white;
+      /* Text color */
+      background-color: hsla(194, 78%, 65%, 0.5);
+      /* Button color */
+      font-size: 32px;
+      /* Font size */
+      cursor: pointer;
+      /* Change cursor to pointer */
+      position: absolute;
+      /* Position absolute for free placement */
+      display: flex;
+      /* Flexbox for centering text */
+      justify-content: center;
+      /* Center text horizontally */
+      align-items: center;
+      /* Center text vertically */
+      transition: background-color 0.3s;
+      /* Smooth background color transition */
+      z-index: 20;
+    }
 
-      /* Positioning buttons at different locations */
-      #enter {
-        bottom: 10%;
-        /* 20% from the top */
-        right: 10%;
-        /* 20% from the left */
-      }
+    .circle-button:hover {
+      background-color: hsla(194, 78%, 65%, 0.8);
+      /* Darker shade on hover */
+    }
 
-      #delete {
-        bottom: 10%;
-        /* 20% from the bottom */
-        right: 20%;
-        /* Center horizontally */
-      }
+    /* Positioning buttons at different locations */
+    #enter {
+      bottom: 10%;
+      /* 20% from the top */
+      right: 10%;
+      /* 20% from the left */
+    }
 
-      #Q {
-        bottom: 10%;
-        /* 60% from the top */
-        right: 30%;
-        /* 20% from the right */
-      }
+    #delete {
+      bottom: 10%;
+      /* 20% from the bottom */
+      right: 20%;
+      /* Center horizontally */
+    }
 
-      @media screen and (orientation: portrait) {
+    #Q {
+      bottom: 10%;
+      /* 60% from the top */
+      right: 30%;
+      /* 20% from the right */
+    }
+
+    @media screen and (orientation: portrait) {
       .virtual-key {
         display: block;
       }
@@ -149,47 +152,82 @@
         /* 20% from the right */
       }
     }
-    </style>
-  </head>
+  </style>
+</head>
 
-  <body>
-    <div class="virtual-key">
-      <button class="circle-button" id="enter"><i class="fa fa-check"></i></button>
-      <button class="circle-button" id="delete"><i class="fa fa-close"></i></button>
-      <button class="circle-button" id="Q"><i class="fa fa-square"></i></button>
-    </div>
-    <div id='id-container'></div>
+<body>
+  <div class="virtual-key">
+    <button class="circle-button" id="enter"><i class="fa fa-check"></i></button>
+    <button class="circle-button" id="delete"><i class="fa fa-close"></i></button>
+    <button class="circle-button" id="Q"><i class="fa fa-square"></i></button>
+  </div>
+  <div id='id-container'></div>
 
-    <script>
-      var container = document.getElementById('id-container');
-      var newScript = document.createElement('script');
-      newScript.type = 'text/javascript';
-      newScript.onload = checkScript;
-      newScript.onerror = checkScript;
-      newScript.src = 'dist/iD.js';
+  <script>
+    var container = document.getElementById('id-container');
+    var newScript = document.createElement('script');
+    newScript.type = 'text/javascript';
+    newScript.onload = checkScript;
+    newScript.onerror = checkScript;
+    newScript.src = 'dist/iD.js';
 
-      document.getElementsByTagName('head')[0].appendChild(newScript);
+    document.getElementsByTagName('head')[0].appendChild(newScript);
 
 
-      function checkScript() {
-        //if (typeof iD === 'undefined' || !iD.utilDetect().support) {
-        //  container.innerHTML = 'Sorry, your browser is not currently supported. Please use another <a href="https://github.com/openstreetmap/iD#basics">browser</a> or <a href="https://wiki.openstreetmap.org/wiki/Editors">editor</a> to contribute to the map.';
-        //  container.style.padding = '20px';
+    function checkScript() {
+      //if (typeof iD === 'undefined' || !iD.utilDetect().support) {
+      //  container.innerHTML = 'Sorry, your browser is not currently supported. Please use another <a href="https://github.com/openstreetmap/iD#basics">browser</a> or <a href="https://wiki.openstreetmap.org/wiki/Editors">editor</a> to contribute to the map.';
+      //  container.style.padding = '20px';
 
-        //} else {
-          var context = iD.coreContext()
-            .assetPath('dist/')
-            .containerNode(container);
-          window.context = window.id = context;  // for debugging
-          context.init();
+      //} else {
+      var context = iD.coreContext()
+        .assetPath('dist/')
+        .containerNode(container);
+      window.context = window.id = context;  // for debugging
+      context.init();
 
-          // disable boundaries (unless we have an explicit disable_features list)
-          var q = iD.utilStringQs(window.location.hash);
-          if (!q.hasOwnProperty('disable_features')) {
-            context.features().disable('boundaries');
-          }
-        //}
+      // disable boundaries (unless we have an explicit disable_features list)
+      var q = iD.utilStringQs(window.location.hash);
+      if (!q.hasOwnProperty('disable_features')) {
+        context.features().disable('boundaries');
       }
-    </script>
-  </body>
+      //}
+    }
+
+
+    function triggerKeyPress(keyCode) {
+      const event = new KeyboardEvent('keydown', {
+        key: keyCode,
+        code: keyCode,
+        keyCode: keyCode,
+        charCode: keyCode,
+        which: keyCode,
+        bubbles: true
+      });
+      document.dispatchEvent(event);
+    }
+
+    // Handle Enter key
+    document.getElementById("enter").addEventListener("click", function () {
+      triggerKeyPress('Enter');
+    });
+    // Handle Delete key
+    document.getElementById("delete").addEventListener("click", function () {
+      triggerKeyPress('Delete');
+    });
+
+    document.getElementById("Q").addEventListener("click", function () {
+      triggerKeyPress('Q');
+    });
+
+    function isIOS() {
+      return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    }
+    if (!isIOS()) {
+      console.log('not ios')
+      document.getElementById("hot-taskingmanager").style.display = "none";
+    }
+  </script>
+</body>
+
 </html>
