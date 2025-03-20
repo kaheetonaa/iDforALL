@@ -68,9 +68,11 @@
             <option value="sp">🇪🇸Spain</option>
         </select>
         <button id="submit" onclick="passHashTags()">Let's mapping!</button> <br><br>
-        <p>In case you have not installed iD4ALL application</p>
-        <button id="installApp">Install</button>
+        
     </form>
+
+    <p>In case you have not installed iD4ALL application</p>
+        <button id="installApp">Install</button>
     <script>
         const hashTags = window.location.hash;
         const team = document.getElementById('team');
@@ -152,20 +154,22 @@
             e.preventDefault();
             // Save the event for later use
             deferredPrompt = e;
+            console.log(e)
         });
         document.getElementById('installApp').addEventListener('click', async () => {
-    if (deferredPrompt) {
-        // Show the installation prompt
-        deferredPrompt.prompt();
+            console.log('click')
+            if (deferredPrompt) {
+                // Show the installation prompt
+                deferredPrompt.prompt();
 
-        // Wait for the user's choice
-        const { outcome } = await deferredPrompt.userChoice;
-        console.log(`User response: ${outcome}`);
+                // Wait for the user's choice
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log(`User response: ${outcome}`);
 
-        // Clear the saved prompt
-        deferredPrompt = null;
-    }
-});
+                // Clear the saved prompt
+                deferredPrompt = null;
+            }
+        });
     </script>
 </body>
 
