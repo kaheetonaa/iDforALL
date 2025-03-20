@@ -3,8 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="pwa-capable" content="yes">
+    <link rel="manifest" href="manifest.json">
+    <link rel="canonical" href="https://kaheetonaa.github.io/iDforALL/" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="manifest" href="manifest.json" />
     <title>Team select 💪</title>
 
 </head>
@@ -68,11 +70,11 @@
             <option value="sp">🇪🇸Spain</option>
         </select>
         <button id="submit" onclick="passHashTags()">Let's mapping!</button> <br><br>
-        
+
     </form>
 
     <p>In case you have not installed iD4ALL application</p>
-        <button id="installApp">Install</button>
+    <button id="installApp">Install</button>
     <script>
         const hashTags = window.location.hash;
         const team = document.getElementById('team');
