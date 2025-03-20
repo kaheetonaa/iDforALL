@@ -1,15 +1,16 @@
-var APP_PREFIX = 'iD4ALL'     // Identifier for this app (this needs to be consistent across every cache update)
+var APP_PREFIX = 'iDforALL'     // Identifier for this app (this needs to be consistent across every cache update)
 var VERSION = 'version_01'              // Version of the off-line cache (change this value everytime you want to update cache)
 var CACHE_NAME = APP_PREFIX + VERSION
 var URLS = [                            // Add URL you want to cache in this list.
-  '/iD4ALL/',                     // If you have separate JS/CSS files,
-  '/iD4ALL/index.html',            // add path to those files here
-  '/iD4ALL/land.html', 
-  '/iD4ALL/redirect.html',
-  '/iD4ALL/tm.html',
-  '/iD4ALL/dist/id.js',
-  '/iD4ALL/dist/id.css',
-  '/iD4ALL/icon/icon-4all.png'    
+  '/iDforALL/',                     // If you have separate JS/CSS files,
+  '/iDforALL/index.html',            // add path to those files here
+  '/iDforALL/land.html', 
+  '/iDforALL/redirect.html',
+  '/iDforALL/tm.html',
+  '/iDforALL/dist/id.js',
+  '/iDforALL/dist/id.css',
+  '/iDforALL/icon/icon-4all.png',
+  '/iDforALL/manifest.json' 
 ]
 
 // Respond with cached resources
