@@ -11,63 +11,66 @@
 
 <style>
     /* Stili generali per il form */
-body{
-    background-color: #ffffff;
-    text-align: center;
-}
-form {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #000000;
-  border-radius: 5px;
-  background-color: white;
-}
+    body {
+        background-color: #405d6355;
+        text-align: center;
+    }
 
-/* Stili per il select */
-select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  margin-bottom: 10px;
-}
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 2px solid #405d63;
+        border-radius: 5px;
+        background-color: white;
+    }
 
-/* Stili per il pulsante */
-#submit {
-  background-color:  #7e7e7e; /* Verde */
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-}
+    /* Stili per il select */
+    select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        margin-bottom: 10px;
+    }
 
-/* Stili per il pulsante al passaggio del mouse */
-#submit:hover {
-  background-color:  #000000; /* Verde più scuro */
-}
+    /* Stili per il pulsante */
+    #submit {
+        background-color: #405d6355;
+        /* Verde */
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    /* Stili per il pulsante al passaggio del mouse */
+    #submit:hover {
+        background-color: #405d63;
+        /* Verde più scuro */
+    }
 </style>
 
 <body>
-    <img src="https://euthmappers.com/app/uploads/2023/05/logo.png"/>
-    <p>This application is developed during EUthMappers project by Quang Huy NGUYEN</p>
     <form>
-    <label for="Choose the team">Choose the team</label>
-    <select name="Team" id="team">
-        <option value="none">Non-EUthMappers</option>
-        <option value="it">🇮🇹Italy</option>
-        <option value="po">🇵🇹Portugal</option>
-        <option value="ro">🇷🇴Romania</option>
-        <option value="sl">🇸🇰Slovakia</option>
-        <option value="sp">🇪🇸Spain</option>
-    </select>
-    <button id="submit" onclick="passHashTags()">Let's mapping!</button> <br><br>
-</form>
+        <img src="https://euthmappers.com/app/uploads/2023/05/logo.png" />
+        <p>This application is developed during EUthMappers project by Quang Huy NGUYEN</p>
+        <label for="Choose the team">Choose the team</label>
+        <select name="Team" id="team">
+            <option value="none">Non-EUthMappers</option>
+            <option value="it">🇮🇹Italy</option>
+            <option value="po">🇵🇹Portugal</option>
+            <option value="ro">🇷🇴Romania</option>
+            <option value="sl">🇸🇰Slovakia</option>
+            <option value="sp">🇪🇸Spain</option>
+        </select>
+        <button id="submit" onclick="passHashTags()">Let's mapping!</button> <br><br>
+    </form>
     <script>
         const hashTags = window.location.hash;
-        const team=document.getElementById('team');
-        var result=[];
+        const team = document.getElementById('team');
+        var result = [];
         var comment;
         function updateData() {
             hash = hashTags.substr(1);
@@ -84,43 +87,41 @@ select {
         updateData()
 
         function passHashTags() {
-            let newHash="#";
-            let taskcode=result['comment'].replace('%23hotosm-project-','');
+            let newHash = "#";
+            let taskcode = result['comment'].replace('%23hotosm-project-', '');
             if (hashTags) {
-                switch(team.value){
+                switch (team.value) {
                     case 'none':
-                        result['locale']='it';
-                    break;
+                        result['locale'] = 'it';
+                        break;
                     case 'it':
-                        result['locale']='it';
-                        result['comment']=result['comment']+'#euthMappers'+'#teamItaly'
-                    break;
+                        result['locale'] = 'it';
+                        result['comment'] = result['comment'] + '#euthMappers' + '#teamItaly'
+                        break;
                     case 'po':
-                        result['locale']='po';
-                        result['comment']=result['comment']+'#euthMappers'+'#teamPortugal'
-                    break;
+                        result['locale'] = 'po';
+                        result['comment'] = result['comment'] + '#euthMappers' + '#teamPortugal'
+                        break;
                     case 'sl':
-                        result['locale']='sl';
-                        result['comment']=result['comment']+'#euthMappers'+'#teamSlovakia'
-                    break;
+                        result['locale'] = 'sl';
+                        result['comment'] = result['comment'] + '#euthMappers' + '#teamSlovakia'
+                        break;
                     case 'sp':
-                        result['locale']='sp';
-                        result['comment']=result['comment']+'#euthMappers'+'#teamSpain'
-                    break;
+                        result['locale'] = 'sp';
+                        result['comment'] = result['comment'] + '#euthMappers' + '#teamSpain'
+                        break;
                     case 'ro':
-                        result['locale']='ro';
-                        result['comment']=result['comment']+'#euthMappers'+'#teamRomania'
-                    break;
+                        result['locale'] = 'ro';
+                        result['comment'] = result['comment'] + '#euthMappers' + '#teamRomania'
+                        break;
                 }
-                result['taskcode']=taskcode;
+                result['taskcode'] = taskcode;
                 for (let tag in result) {
-                    newHash+=tag+'='+result[tag]+'&'
+                    newHash += tag + '=' + result[tag] + '&'
                 }
-                newHash=newHash.slice(0, -1);
+                newHash = newHash.slice(0, -1);
                 console.log(newHash);
-                if (team.value!='none') {
                 window.open(`/iDforALL/${newHash}`, '_blank'); //
-                }
             } else {
                 window.open('/iDforALL/', '_blank');
             }
