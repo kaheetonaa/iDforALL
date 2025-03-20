@@ -35,7 +35,8 @@
     }
 
     /* Stili per il pulsante */
-    #submit {
+    #submit,
+    #installApp {
         background-color: #405d6355;
         /* Verde */
         color: white;
@@ -46,7 +47,8 @@
     }
 
     /* Stili per il pulsante al passaggio del mouse */
-    #submit:hover {
+    #submit:hover,
+    #installApp:hover {
         background-color: #405d63;
         /* Verde più scuro */
     }
@@ -66,6 +68,8 @@
             <option value="sp">🇪🇸Spain</option>
         </select>
         <button id="submit" onclick="passHashTags()">Let's mapping!</button> <br><br>
+        <p>In case you have not installed iD4ALL application</p>
+        <button id="installApp">Install</button>
     </form>
     <script>
         const hashTags = window.location.hash;
@@ -127,6 +131,41 @@
             }
             //window.close()
         }
+        if (navigator.serviceWorker) {
+            // Start registration process on every page load 
+            window.addEventListener('load', () => {
+                navigator.serviceWorker
+                    // The register function takes as argument 
+                    // the file path to the worker's file 
+                    .register('/sw.js')
+                    // Gives us registration object 
+                    .then(reg => console.log('Service Worker Registered'))
+                    .catch(swErr => console.log(
+                        `Service Worker Installation Error: ${swErr}}`));
+            });
+        }
+
+        let deferredPrompt;
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent the default prompt from showing automatically
+            e.preventDefault();
+            // Save the event for later use
+            deferredPrompt = e;
+        });
+        document.getElementById('installApp').addEventListener('click', async () => {
+    if (deferredPrompt) {
+        // Show the installation prompt
+        deferredPrompt.prompt();
+
+        // Wait for the user's choice
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log(`User response: ${outcome}`);
+
+        // Clear the saved prompt
+        deferredPrompt = null;
+    }
+});
     </script>
 </body>
 
