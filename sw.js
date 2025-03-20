@@ -7,8 +7,8 @@ var URLS = [                            // Add URL you want to cache in this lis
   '/iDforALL/land.html', 
   '/iDforALL/redirect.html',
   '/iDforALL/tm.html',
-  '/iDforALL/dist/id.js',
-  '/iDforALL/dist/id.css',
+  '/iDforALL/dist/iD.js',
+  '/iDforALL/dist/iD.css',
   '/iDforALL/icon/icon-4all.png',
   '/iDforALL/manifest.json' 
 ]
