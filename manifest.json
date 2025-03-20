@@ -1,5 +1,5 @@
 {
-  "background_color": "#62cbec",
+  "background_color": "#000000",
   "description": "idEditor for All",
   "display": "standalone",
   "display_override": ["tabbed"],

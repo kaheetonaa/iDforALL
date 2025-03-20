@@ -12,14 +12,14 @@
 <style>
     /* Stili generali per il form */
 body{
-    background-color: #62cbec33;
+    background-color: #ffffff;
     text-align: center;
 }
 form {
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
-  border: 1px solid #62cbec;
+  border: 1px solid #000000;
   border-radius: 5px;
   background-color: white;
 }
@@ -35,7 +35,7 @@ select {
 
 /* Stili per il pulsante */
 #submit {
-  background-color:  #62cbec; /* Verde */
+  background-color:  #7e7e7e; /* Verde */
   color: white;
   padding: 10px 20px;
   border: none;
@@ -45,16 +45,17 @@ select {
 
 /* Stili per il pulsante al passaggio del mouse */
 #submit:hover {
-  background-color:  #62cbec; /* Verde più scuro */
+  background-color:  #000000; /* Verde più scuro */
 }
 </style>
 
 <body>
     <img src="https://euthmappers.com/app/uploads/2023/05/logo.png"/>
+    <p>This application is developed during EUthMappers project by Quang Huy NGUYEN</p>
     <form>
     <label for="Choose the team">Choose the team</label>
     <select name="Team" id="team">
-        <option value="none">--Please select the team--</option>
+        <option value="none">Non-EUthMappers</option>
         <option value="it">🇮🇹Italy</option>
         <option value="po">🇵🇹Portugal</option>
         <option value="ro">🇷🇴Romania</option>
@@ -87,6 +88,9 @@ select {
             let taskcode=result['comment'].replace('%23hotosm-project-','');
             if (hashTags) {
                 switch(team.value){
+                    case 'none':
+                        result['locale']='it';
+                    break;
                     case 'it':
                         result['locale']='it';
                         result['comment']=result['comment']+'#euthMappers'+'#teamItaly'
