@@ -1,4 +1,4 @@
-var GHPATH = 'iDforALL';
+var GHPATH = 'https://kaheetonaa.github.io/iDforALL';
 var APP_PREFIX = 'iDforALL';
 var VERSION = 'version_0_0_1';
 var URLS = [    
