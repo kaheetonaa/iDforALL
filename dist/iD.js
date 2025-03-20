@@ -14478,11 +14478,11 @@
         live: {
           url: "https://www.openstreetmap.org",
           apiUrl: "https://api.openstreetmap.org",
-          client_id: "0tmNTmd0Jo1dQp4AUmMBLtGiD9YpMuXzHefitcuVStc"
+          client_id: "qMoWHp_3M7QjZqr5Sw1JieVSibGB5p71T_QU6fiRUok"
         },
         dev: {
           url: "https://api06.dev.openstreetmap.org",
-          client_id: "Ee1wWJ6UlpERbF6BfTNOpwn0R8k_06mvMXdDUkeHMgw"
+          client_id: "qk6Xvnl2vNfBhuzVbLcUz4P67s5qJRlDppb2uaHd370"
         }
       };
       osmApiConnections = [];
@@ -83277,12 +83277,28 @@ this.ifd0Offset: ${this.ifd0Offset}, file.byteLength: ${e3.byteLength}`), e3.tif
       urlroot = osmApiConnections[0].url;
       apiUrlroot = osmApiConnections[0].apiUrl || urlroot;
       redirectPath = window.location.origin + window.location.pathname;
+      redirectPath = window.location.origin + window.location.pathname;
+      if (redirectPath.includes("index.html")) {
+        redirectPath = redirectPath.replace("index.html", "land.html");
+      } else {
+        redirectPath += "land.html";
+      }
+      console.log(redirectPath);
       oauth = osmAuth({
         url: urlroot,
         apiUrl: apiUrlroot,
         client_id: osmApiConnections[0].client_id,
         scope: "read_prefs write_prefs write_api read_gpx write_notes",
-        redirect_uri: redirectPath + "land.html",
+        redirect_uri: redirectPath,
+        loading: authLoading,
+        done: authDone
+      });
+      oauth = osmAuth({
+        url: urlroot,
+        apiUrl: apiUrlroot,
+        client_id: osmApiConnections[0].client_id,
+        scope: "read_prefs write_prefs write_api read_gpx write_notes",
+        redirect_uri: redirectPath,
         loading: authLoading,
         done: authDone
       });

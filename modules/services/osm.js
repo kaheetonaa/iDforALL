@@ -20,12 +20,28 @@ var dispatch = d3_dispatch('apiStatusChange', 'authLoading', 'authDone', 'change
 var urlroot = osmApiConnections[0].url;
 var apiUrlroot = osmApiConnections[0].apiUrl || urlroot;
 var redirectPath = window.location.origin + window.location.pathname;
+redirectPath = window.location.origin + window.location.pathname;
+      if (redirectPath.includes('index.html')){
+        redirectPath=redirectPath.replace('index.html','land.html')
+      }else{
+        redirectPath+='land.html'
+      }//if index.html exist in path
+      console.log(redirectPath)
+      oauth = osmAuth({
+        url: urlroot,
+        apiUrl: apiUrlroot,
+        client_id: osmApiConnections[0].client_id,
+        scope: "read_prefs write_prefs write_api read_gpx write_notes",
+        redirect_uri: redirectPath,
+        loading: authLoading,
+        done: authDone
+      });
 var oauth = osmAuth({
     url: urlroot,
     apiUrl: apiUrlroot,
     client_id: osmApiConnections[0].client_id,
     scope: 'read_prefs write_prefs write_api read_gpx write_notes',
-    redirect_uri: redirectPath + 'land.html',
+    redirect_uri: redirectPath,
     loading: authLoading,
     done: authDone
 });

@@ -4,7 +4,7 @@ const gaze = require('gaze');
 const serve = require('serve-handler');
 
 const buildCSS = require('./build_css.js');
-const port = 8080;
+const port = 1919;
 
 gaze(['css/**/*.css'], (err, watcher) => {
   watcher.on('all', () => buildCSS());
