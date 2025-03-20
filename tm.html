@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="manifest.json" />
+    <title>HOT-Tasking-manager-browser</title>
+</head>
+  
+<style type='text/css'>
+    /* apply document-level styling to standalone iD only */
+    html,
+    body {
+
+      margin: 10px;
+      padding: 0;
+      /* disable elastic page bounce upon scroll */
+      overflow: hidden;
+      font-family: "Comfortaa";
+    }
+      h1,
+    h2 {
+      color: #62cbec;
+    }
+  </style>
+
+<body>
+    <h1>HOT-Tasking-manager-browser</h1>
+    <p>Select the projects here.</p>
+    <iframe id="hot-taskingmanager" src="google.com" style="border:1px dashed #62cbec;height:500px;width:100%;"
+    title="Iframe Example"> </iframe>
+  <a href="/id_sandbox_for_all/">Back</a>
+  
+</body>
+  <script>
+  function getTaskCode() {
+    hash = window.location.hash.substr(1);
+    if (window.location.hash) {
+      result = hash.split('&').reduce(function (res, item) {
+            var parts = item.split('=');
+            res[parts[0]] = parts[1];
+            return res;
+          }, {});
+      console.log(result)
+      if(result['taskcode'] !== undefined){
+        document.getElementById("hot-taskingmanager").src="https://tasks.hotosm.org/projects/"+result['taskcode']+"/map/?editor=CUSTOM";
+      }else {
+      document.getElementById("hot-taskingmanager").src="https://tasks.hotosm.org/"
+    }
+    } else {
+      document.getElementById("hot-taskingmanager").src="https://tasks.hotosm.org/"
+    }
+  }
+  getTaskCode();
+
+  
+  </script>
+
+</html>
