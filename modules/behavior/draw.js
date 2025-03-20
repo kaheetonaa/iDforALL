@@ -60,6 +60,7 @@ export function behaviorDraw(context) {
     }
 
     function pointerdown(d3_event) {
+        
 
         if (_downPointer) return;
 
@@ -161,6 +162,7 @@ export function behaviorDraw(context) {
     // - `behavior/draw.js`      `click()`
     // - `behavior/draw_way.js`  `move()`
     function click(d3_event, loc) {
+
         var d = datum(d3_event);
         var target = d && d.properties && d.properties.entity;
 

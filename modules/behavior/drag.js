@@ -77,6 +77,7 @@ export function behaviorDrag() {
         if (_origin) {
             offset = _origin.call(_targetNode, _targetEntity);
             offset = [offset[0] - startOrigin[0], offset[1] - startOrigin[1]];
+
         } else {
             offset = [0, 0];
         }
@@ -94,7 +95,6 @@ export function behaviorDrag() {
                 var tolerance = d3_event.pointerType === 'pen' ? _penTolerancePx : _tolerancePx;
                 // don't start until the drag has actually moved somewhat
                 if (dist < tolerance) return;
-
                 started = true;
                 dispatch.call('start', this, d3_event, _targetEntity);
 
@@ -109,11 +109,13 @@ export function behaviorDrag() {
                 var dx = p[0] - startOrigin[0];
                 var dy = p[1] - startOrigin[1];
                 dispatch.call('move', this, d3_event, _targetEntity, [p[0] + offset[0],  p[1] + offset[1]], [dx, dy]);
+
             }
         }
 
 
         function pointerup(d3_event) {
+
             if (_pointerId !== (d3_event.pointerId || 'mouse')) return;
 
             _pointerId = null;

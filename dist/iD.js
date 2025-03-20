@@ -57378,7 +57378,7 @@ this.ifd0Offset: ${this.ifd0Offset}, file.byteLength: ${e3.byteLength}`), e3.tif
         return d2.id;
       });
       targets.exit().remove();
-      targets.enter().append("rect").attr("x", -10).attr("y", -26).attr("width", 20).attr("height", 30).merge(targets).attr("class", function(d2) {
+      targets.enter().append("circle").attr("cx", 0).attr("cy", -10).attr("r", 30).merge(targets).attr("class", function(d2) {
         return "node point target " + fillClass + d2.id;
       }).attr("transform", getTransform);
     }
@@ -57524,9 +57524,9 @@ this.ifd0Offset: ${this.ifd0Offset}, file.byteLength: ${e3.byteLength}`), e3.tif
   function svgVertices(projection2, context) {
     var radiuses = {
       //       z16-, z17,   z18+,  w/icon
-      shadow: [6, 7.5, 7.5, 12],
+      shadow: [28, 26, 26, 26],
       stroke: [2.5, 3.5, 3.5, 8],
-      fill: [1, 1.5, 1.5, 1.5]
+      fill: [2, 4, 4, 4]
     };
     var _currHoverTarget;
     var _currPersistent = {};
